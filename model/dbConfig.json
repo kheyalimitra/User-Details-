@@ -1,0 +1,21 @@
+{
+   "db_dev": {
+       "dialect": "postgres",
+        "user": "postgres",
+        "host": "localhost",
+        "database": "postgres",
+        "password": "pgAdmin",
+        "port": "5432",
+        "table_name": "user_details"
+   } ,
+   "db_prod": {
+        "user": "",
+        "host": "",
+        "database": "",
+        "password": "",
+        "port": "",
+        "table_name": ""
+    } ,
+   "url_domain_dev": "http://localhost:3000",
+   "url_domain_prod": ""
+}

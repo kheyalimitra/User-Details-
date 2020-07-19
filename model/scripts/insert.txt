@@ -1,0 +1,1 @@
+-- Insert into user_details (display_name, email, country) values('test', 'test@gmail.com', 'CA')
