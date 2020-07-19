@@ -27,11 +27,12 @@ class UserService {
     async createNewUser(req, res) {
         try {
             const newUser = {
-                "name": req.name,
-                "email": req.email ? req.name : "",
+                "name": req.name.trim(),
+                "email": req.email ? req.email : `${req.name.trim()}@test.com`,
                 "country": req.country ? req.country : "CA"
             };
             const response = await this.userModel.saveUser(newUser);
+            console.log("succesfully save the used in db");
             res.status(200).send(response);
         } catch(err) {
             res.status(500).send({message: `unable to create user. Details: ${err}`});

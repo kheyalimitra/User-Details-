@@ -13,7 +13,7 @@ router.get('/user/:id', (req, res) => {
     userService.getUserDetails(req, res);
 })
 
-router.post('/user', (req, res) => {
+router.post('/user', (req, res, ) => {
     userService.createNewUser(req.body, res);
 })
 

@@ -3,9 +3,18 @@
 const expect = require('chai').expect;
 const bodyParser = require('body-parser');
 const request = require('supertest');
-const app = require('../../app');
+const app = require('../../server');
 
 describe('User service unit tests', () => {
+    beforeAll(done => {
+        
+        done()
+      })
+      
+      afterAll(done => {
+        app.close();
+        done()
+      })
     describe('Unit testing  /id GET route', function() {
         app.use(bodyParser);
         it('should return OK status', function() {

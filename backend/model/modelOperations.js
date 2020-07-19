@@ -14,7 +14,6 @@ class ModelOperations {
             
             const queryString = `SELECT id, display_name, email, country FROM ${this.client.table_name} WHERE id=$1`;
             const response = await conn.query(queryString, [id]);
-            console.log('response: ', response);
             return response;
         } catch(e) {
             throw e;
@@ -24,7 +23,6 @@ class ModelOperations {
     }
 
     async saveUser(newUser) {
-        console.log('saveUser');
         const conn = await this.client.pool.connect();
         try {
             const queryString = `INSERT INTO ${this.client.table_name} (display_name, email, country) VALUES ($1, $2, $3) RETURNING id;`;
