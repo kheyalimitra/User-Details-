@@ -2,8 +2,6 @@
 
 const expect = require('chai').expect;
 const bodyParser = require('body-parser');
-var chai = require('chai').use(require('chai-as-promised'));
-const should = chai.should();
 const request = require('supertest');
 const app = require('../../app');
 

@@ -1,7 +1,5 @@
 'use strict'
 
-const httpMocks = require('node-mocks-http');
-const  enableFetchMocks = require('jest-fetch-mock');
 const expect = require('chai').expect;
 const UserService = require('../user');
 
