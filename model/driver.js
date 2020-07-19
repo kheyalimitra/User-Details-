@@ -1,7 +1,7 @@
 'use strict'
 
 const pg = require("pg");
-const config = require('./dbConfig.json');
+const config = require('../config/dbConfig.json');
 
 class PGDriver {
     constructor() {
