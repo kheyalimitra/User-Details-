@@ -14,10 +14,9 @@ const corsOptions = cors.CorsOptions = {
 };
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
-app.use(function (err, req, res, next) {
-    console.log("Error Occured. details:", err.stack);
-    next();
-});
+// app.use(function (err, req, res, next) {
+//     console.log("Error Occured. details:", err);
+// });
 const port = process.env.PORT || 3000;
 const host = 'localhost';
 app.use('/', appRouter);

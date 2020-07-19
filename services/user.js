@@ -8,31 +8,33 @@ class UserService {
         this.userModel = new ModelOperations();
     }
 
-    generateUUID(req, res) {
-        res.send(uuidv4());
+    generateUUID() {
+        return uuidv4();
+    }
+    getUUID(req, res) {
+        res.status(200).send({uuid: this.generateUUID()});
     }
 
-    async getUserDetails(req, res, next) {
+    async getUserDetails(req, res) {
         try {
             const response = await this.userModel.fetchUser(req.params.id);
             res.status(200).send(response.rows);
         } catch(err) {
-            next(err);
+            res.status(500).send({message: `unable to get user. Details: ${err}`});
         }
     }
 
-    async createNewUser(req, res, next) {
-        console.log('inside createNewUser');
+    async createNewUser(req, res) {
         try {
             const newUser = {
-                "name": req.name ? req.name : "no_name",
+                "name": req.name,
                 "email": req.email ? req.name : "",
                 "country": req.country ? req.country : "CA"
             };
             const response = await this.userModel.saveUser(newUser);
             res.status(200).send(response);
         } catch(err) {
-            next(err);
+            res.status(500).send({message: `unable to create user. Details: ${err}`});
         }
     }
 }
