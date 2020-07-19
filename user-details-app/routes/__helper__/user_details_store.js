@@ -1,16 +1,26 @@
 const fetch = require("node-fetch");
 class UserDetails {
-    // constructor() {
+    getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
 
-    // }
-    getUserDetails(id) {
-        id = id ? id : 'eaddcde4-c974-11ea-92c1-4c327593b7eb';
-        console.log(id);
-        fetch(`http://localhost:3000/user/${id}`)
+    createUser(name=null) {
+        name = name ? name : 'default-' + this.getRandomInt(100).toString();
+        console.log('Going to create new user named ', name);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name })
+        };
+        return fetch('http://localhost:3000/user', requestOptions)
         .then(response => response.json())
         .then(data => {
-            return data;
-        });
+            console.log("received data ", data);
+            return (data);
+        }).catch(err => {
+            throw ("Error: ", err);
+        })
+        
     }
 }
 
