@@ -10,6 +10,7 @@ Simple RESTful API using node and express.
 
 4. from `<dir>`  
     `$docker-compose up `
+    ** to stop this, run `$docker-compose down`
 
 5. backend should listen on port 3000, frontend on 800 and pg database on 5432
 
