@@ -39,8 +39,6 @@ class UserService {
             console.log("succesfully saved the entry in db");
             const tone = await this.toneGenerator.call_Tone_API();
             response["tone"] = tone["tone"];
-            console.log(tone);
-            console.log(response);
             res.status(200).send(response);
         } catch(err) {
             res.status(500).send({message: `unable to create user. Details: ${err}`});
