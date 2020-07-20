@@ -43,11 +43,12 @@ describe('User service unit tests', () => {
         });
     });
     describe('Unit testing the /user GET route', function() {
-
+        // Make sure to pick the right uuid from existing data, it will fail otherwise. 
+        // In that case, run post request, get the uuid and replace it here. 
         it('should return OK status', function() {
             return new Promise((resolve) => {
                 request(app)
-                .get('/user/eaddcde4-c974-11ea-92c1-4c327593b7eb')
+                .get('/user/c0ba3dd0-ca56-11ea-ae2d-0242ac170002')
                 .then(function(response){
                     expect(response.status).equal(200);
                     resolve();
@@ -58,7 +59,7 @@ describe('User service unit tests', () => {
             return new Promise((resolve) => {
                 const start = process.hrtime();
                 request(app)
-                .get('/user/eaddcde4-c974-11ea-92c1-4c327593b7eb')
+                .get('/user/c0ba3dd0-ca56-11ea-ae2d-0242ac170002')
                 .then(function(response){
                     const elapsed = process.hrtime(start)[1] / 1000000; // divide by a million to get nano to milli
                     const timeTaken = elapsed.toFixed(3);
