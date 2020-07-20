@@ -2,13 +2,13 @@
 Simple RESTful API using node and express.
 
 ## How to run this project
-1. git clone to <dir>
+1. git clone to `<dir>`
 
-2. go to <dir>
+2. go to `<dir>`
 
 3. We user `docker-compose` command so we need to install that
 
-4. from <dir>   
+4. from `<dir>`  
     `$docker-compose up `
 
 5. backend should listen on port 3000, frontend on 800 and pg database on 5432
