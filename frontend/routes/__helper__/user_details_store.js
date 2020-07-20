@@ -18,7 +18,6 @@ class UserDetails {
         return fetch(config.docker.POST_USER_URL, requestOptions)
         .then(response => response.json())
         .then(data => {
-            console.log("received data ", data);
             return (data);
         }).catch(err => {
             throw ("Error: ", err);
