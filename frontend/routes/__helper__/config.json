@@ -1,0 +1,5 @@
+{
+    "docker": {
+        "POST_USER_URL": "http://host.docker.internal:3000/user"
+    }
+}

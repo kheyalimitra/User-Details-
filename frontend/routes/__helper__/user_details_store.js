@@ -1,4 +1,7 @@
+'use strict'
+
 const fetch = require("node-fetch");
+const config = require("./config.json");
 class UserDetails {
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
@@ -12,7 +15,7 @@ class UserDetails {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: name })
         };
-        return fetch('http://localhost:3000/user', requestOptions)
+        return fetch(config.docker.POST_USER_URL, requestOptions)
         .then(response => response.json())
         .then(data => {
             console.log("received data ", data);

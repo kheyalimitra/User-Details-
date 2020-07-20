@@ -5,14 +5,15 @@ const config = require('../config/dbConfig.json');
 
 class PGDriver {
     constructor() {
+
         this.pool = new pg.Pool({
-            user: config.db_dev.user,
-            host: config.db_dev.host,
-            database: config.db_dev.database,
-            password: config.db_dev.password,
-            port: config.db_dev.port
+            user: config.docker_db.user,
+            host: config.docker_db.host,
+            database: config.docker_db.database,
+            password: config.docker_db.password,
+            port: config.docker_db.port
         });
-        this.table_name = config.db_dev.table_name;
+        this.table_name = config.docker_db.table_name;
     }
 }
 

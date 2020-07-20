@@ -1,0 +1,43 @@
+version: "3"
+services:
+  pg:
+    image: "postgres"
+    container_name: "postgres-db"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db
+    volumes:
+      - ./postgres/postgres.conf:/etc/postgresql/postgresql.conf
+      - ./postgres/init/create-table.sql:/docker-entrypoint-initdb.d/create-table.sql
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    networks:
+      - database
+    ports:
+      - '5432:5432'
+  node_backend:
+    container_name: "user-api-backend"
+    build: ./backend/
+    depends_on: 
+      - pg
+    networks:
+      - node_backend
+    ports:
+      - "3000:3000"
+
+  frontend:
+    container_name: "frontend"
+    build: ./frontend/
+    networks:
+      - frontend
+    # depends_on: 
+    #   - node_backend
+    ports:
+      - "8000:8000"
+networks:
+  frontend:
+    driver: bridge
+  node_backend:
+    driver: bridge
+  database:
+    driver: bridge

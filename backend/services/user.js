@@ -32,7 +32,7 @@ class UserService {
                 "country": req.country ? req.country : "CA"
             };
             const response = await this.userModel.saveUser(newUser);
-            console.log("succesfully save the used in db");
+            console.log("succesfully saved the entry in db");
             res.status(200).send(response);
         } catch(err) {
             res.status(500).send({message: `unable to create user. Details: ${err}`});

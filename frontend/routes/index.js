@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
         const dataStore = new UserDetails();
         const response = await dataStore.createUser();
         if (response.message) {
-            res.render('error', {title: 'Something went wrong', response: response});
+            res.render('error', {title: 'Something went wrong', response: response.message});
         }
         else {
           res.render('index', {title: 'User Details', response: response});  
@@ -18,6 +18,7 @@ router.get('/', async (req, res, next) => {
         
         
     } catch (err) {
+        console.log(err);
         res.render('error', {title: 'Something went wrong', response: err});
         next(err);
     }

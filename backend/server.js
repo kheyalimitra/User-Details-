@@ -16,9 +16,9 @@ const corsOptions = cors.CorsOptions = {
 server.use(bodyParser.json());
 server.use(cors(corsOptions));
 const port = process.env.PORT || 3000;
-const host = 'localhost';
+const host = '0.0.0.0';
 server.use('/', appRouter);
 server.listen(port, host);
-console.log(`User API server running on Port ${port}...`);
+console.log(`User API server running on Port ${host} ${port}...`);
 
 module.exports = server;
