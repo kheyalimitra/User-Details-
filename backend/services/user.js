@@ -1,11 +1,13 @@
 'use strict'
 
-const ModelOperations = require('../model/modelOperations');
 const  uuidv4 = require('uuid').v4;
+const ModelOperations = require('../model/modelOperations');
+const ToneGenerator = require('./tone');
 
 class UserService {
     constructor() {
         this.userModel = new ModelOperations();
+        this.toneGenerator = new ToneGenerator();
     }
 
     generateUUID() {
@@ -18,6 +20,8 @@ class UserService {
     async getUserDetails(req, res) {
         try {
             const response = await this.userModel.fetchUser(req.params.id);
+            const tone = await this.toneGenerator.call_Tone_API();
+            response.rows[0]["tone"] = tone["tone"];
             res.status(200).send(response.rows);
         } catch(err) {
             res.status(500).send({message: `unable to get user. Details: ${err}`});
@@ -33,6 +37,10 @@ class UserService {
             };
             const response = await this.userModel.saveUser(newUser);
             console.log("succesfully saved the entry in db");
+            const tone = await this.toneGenerator.call_Tone_API();
+            response["tone"] = tone["tone"];
+            console.log(tone);
+            console.log(response);
             res.status(200).send(response);
         } catch(err) {
             res.status(500).send({message: `unable to create user. Details: ${err}`});
